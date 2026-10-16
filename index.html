@@ -118,7 +118,7 @@ nav.filters button.active.sp-active{background:#f59e0b;color:#1e0a0a}
 <br><br>
 <b>Case Record Type validation.</b> Live-open set today = <b>70/70</b> cases are RecordType = <span class="mono">Support</span>. Zero cases excluded on record type.
 <br><br>
-<b>Success Plan validation.</b> Success Plan is read from <span class="mono">Account.SupportLevel__c</span>. Full AMER red roster = <b>752</b> accounts spanning Signature (377), Premier (266), Basic (103), Partner Premier (3), Premier+ (2), Standard (1). DE subset = <b>51</b> accounts. The following plan values exist in the broader AMER red roster but have <b>no open DE case</b> in this snapshot: Premier+ (2 accounts), Partner Premier (3 accounts), Standard (1 accounts), Basic (103 accounts). These plans are flagged in Section 8 rather than silently omitted.
+<b>Success Plan validation.</b> Success Plan is read from <span class="mono">Account.SupportLevel__c</span>. Full AMER red roster = <b>752</b> accounts spanning Signature (377), Premier (266), Basic (103), Partner Premier (3), Premier+ (2), Standard (1). DE subset = <b>51</b> accounts. The following plan values exist in the broader AMER red roster but have <b>no open DE case</b> in this snapshot: Premier+ (2 accounts), Partner Premier (3 accounts), Standard (1 accounts), Basic (103 accounts). These plans are flagged here in the Executive Summary rather than silently omitted.
 <br><br>
 <b>Red-Status Date & Reason.</b> The Account object does not expose a <span class="mono">RedStatusDate__c</span> or narrative <span class="mono">RedStatusReason__c</span> in the schema we queried. Per-account "red since (proxy)" below is <b>derived</b> as <span class="mono">MIN(Case.CreatedDate) WHERE Open_Red_Account__c = true</span> on that account — labeled as a proxy, never as a stated attribute. "Red-Status Reason" is reported as <i>not exposed in report</i> on every card.
 <br><br>
@@ -176,7 +176,7 @@ nav.filters button.active.sp-active{background:#f59e0b;color:#1e0a0a}
 <button class="f-sp" data-sp="Standard">Standard (0 · 0 cases)</button>
 <button class="f-sp" data-sp="Basic">Basic (0 · 0 cases)</button>
 </div>
-<div class="sub" style="font-size:11px">Changing Success Plan updates every <span class="mono">sp-filterable</span> table (Sections 2 · 3 · 4 · D · E · F) and the account cards in Section 5. Baseline criteria (Region=AMER, Red=true, Cloud=Service-Digital Engagement, RecordType=Support) remain pinned on every component.</div>
+<div class="sub" style="font-size:11px">Changing Success Plan updates every <span class="mono">sp-filterable</span> table (Sections 2 · 3 · 4 · D) and the account cards in Section 5. Baseline criteria (Region=AMER, Red=true, Cloud=Service-Digital Engagement, RecordType=Support) remain pinned on every component.</div>
 </nav>
 
 <h2>D. Top Case Drivers by Success Plan</h2>
@@ -3531,106 +3531,6 @@ nav.filters button.active.sp-active{background:#f59e0b;color:#1e0a0a}
 </tr></tbody></table></details>
 </div>
 </div></section>
-
-<h2>6. Success Plan Comparison — Red Status Drivers by Plan</h2>
-<div class="sub">Per-plan breakdown of the AMER red roster. "AMER red (all)" is the full roster (752 accounts across all clouds); "DE subset" is the 51 accounts carrying ≥1 open <span class="mono">Service-Digital Engagement</span> Support case. The <b>Flagged</b> rows highlight plans that exist in the broader AMER red roster but have <b>zero</b> open DE representation — surfaced per the mandate to not silently omit any plan.</div>
-<table class="plan-compare">
-<thead><tr><th>Success Plan</th><th>AMER red (all)</th><th>DE subset</th><th>Open DE cases</th><th>L1 open</th><th>L2 open</th><th>Confirmed</th><th>Probable</th><th>FY27 cases (all clouds)</th><th>Note</th></tr></thead>
-<tbody><tr>
-<td><span class="sppill sp-prem">Premier</span></td>
-<td class="num mono">266</td>
-<td class="num mono">16</td>
-<td class="num mono">19</td>
-<td class="num mono">2</td>
-<td class="num mono">9</td>
-<td class="num mono">3</td>
-<td class="num mono">11</td>
-<td class="num mono">11,909</td>
-<td class="sub">16/266 AMER red Premier accounts have ≥1 open DE case (6% coverage).</td>
-</tr><tr>
-<td><span class="sppill sp-sig">Signature</span></td>
-<td class="num mono">377</td>
-<td class="num mono">35</td>
-<td class="num mono">51</td>
-<td class="num mono">4</td>
-<td class="num mono">28</td>
-<td class="num mono">8</td>
-<td class="num mono">19</td>
-<td class="num mono">11,799</td>
-<td class="sub">35/377 AMER red Signature accounts have ≥1 open DE case (9% coverage).</td>
-</tr><tr>
-<td><span class="sppill sp-prempls">Premier+</span></td>
-<td class="num mono">2</td>
-<td class="num mono">0</td>
-<td class="num mono">0</td>
-<td class="num mono">0</td>
-<td class="num mono">0</td>
-<td class="num mono">0</td>
-<td class="num mono">0</td>
-<td class="num mono">0</td>
-<td class="sub"><span class="flag">Flagged:</span> 2 AMER red Premier+ accounts but <b>none have an open DE case</b> in this snapshot. Not silently omitted.</td>
-</tr><tr>
-<td><span class="sppill sp-un">Partner Premier</span></td>
-<td class="num mono">3</td>
-<td class="num mono">0</td>
-<td class="num mono">0</td>
-<td class="num mono">0</td>
-<td class="num mono">0</td>
-<td class="num mono">0</td>
-<td class="num mono">0</td>
-<td class="num mono">0</td>
-<td class="sub"><span class="flag">Flagged:</span> 3 AMER red Partner Premier accounts but <b>none have an open DE case</b> in this snapshot. Not silently omitted.</td>
-</tr><tr>
-<td><span class="sppill sp-std">Basic</span></td>
-<td class="num mono">103</td>
-<td class="num mono">0</td>
-<td class="num mono">0</td>
-<td class="num mono">0</td>
-<td class="num mono">0</td>
-<td class="num mono">0</td>
-<td class="num mono">0</td>
-<td class="num mono">0</td>
-<td class="sub"><span class="flag">Flagged:</span> 103 AMER red Basic accounts but <b>none have an open DE case</b> in this snapshot. Not silently omitted.</td>
-</tr><tr>
-<td><span class="sppill sp-std">Standard</span></td>
-<td class="num mono">1</td>
-<td class="num mono">0</td>
-<td class="num mono">0</td>
-<td class="num mono">0</td>
-<td class="num mono">0</td>
-<td class="num mono">0</td>
-<td class="num mono">0</td>
-<td class="num mono">0</td>
-<td class="sub"><span class="flag">Flagged:</span> 1 AMER red Standard account but <b>none have an open DE case</b> in this snapshot. Not silently omitted.</td>
-</tr></tbody>
-</table>
-
-<h2>7. Data Validation & Exclusion Summary</h2>
-<div class="sub">Explicit counts of what is included, excluded, derived, and not available in the underlying report, so the methodology can be audited by anyone who reads the dashboard.</div>
-<table class="validation-table">
-<thead><tr><th style="min-width:260px">Validation check</th><th>Result</th><th>Detail</th></tr></thead>
-<tbody>
-<tr><td>Region filter</td><td class="ok">PASS</td><td>Every account has <span class="mono">Account.Region__c = 'AMER'</span>. Full AMER red roster = <b>752</b> accounts.</td></tr>
-<tr><td>Account health filter</td><td class="ok">PASS</td><td>Every case has <span class="mono">Open_Red_Account__c = true</span> (the per-case boolean driving the OrgCS "Red Accounts - AMER" report).</td></tr>
-<tr><td>DE product-scope filter</td><td class="ok">PASS</td><td>Every case has <span class="mono">Cloud__c = 'Service-Digital Engagement'</span>. Adjacent clouds (Industry-OmniStudio, Mulesoft-Omni Gateway, Marketing App-Messaging, Industry-CPQ/OM/DC) explicitly excluded.</td></tr>
-<tr><td>Case Record Type filter</td><td class="ok">PASS</td><td>Live-today open set: <b>70/70</b> cases are <span class="mono">RecordType.Name = 'Support'</span>. Cases with any other record type: <b>0</b>.</td></tr>
-<tr><td>Success Plan — full roster vs DE subset</td><td class="ok">PASS</td><td>Signature: <b>377</b> in AMER red / <b>35</b> in DE subset. Premier: <b>266</b> / <b>16</b>. Basic: <b>103</b> / <b>0</b>. Premier+: <b>2</b> / <b>0</b>. Partner Premier: <b>3</b> / <b>0</b>. Standard: <b>1</b> / <b>0</b>. No Unknown/blank in either.</td></tr>
-<tr><td>Success Plan — plans with no DE representation</td><td class="flag">FLAGGED</td><td><b>Premier+</b> (2 accounts), <b>Partner Premier</b> (3 accounts), <b>Standard</b> (1 accounts), <b>Basic</b> (103 accounts) are present in the AMER red roster but have <b>zero</b> open DE cases in this snapshot. Surfaced in Section 6 rather than silently omitted.</td></tr>
-<tr><td>Red-Status Date</td><td class="flag">DERIVED PROXY</td><td>Account.RedStatusDate__c is <b>not exposed</b> in the schema. Per-account "red since" column uses <span class="mono">MIN(Case.CreatedDate) WHERE Open_Red_Account__c = true</span>, labeled as a proxy on every card. Not a stated attribute of the Account record.</td></tr>
-<tr><td>Red-Status Reason</td><td class="flag">NOT EXPOSED</td><td>Account.RedStatusReason__c (or equivalent narrative field) is <b>not exposed</b> in the schema. The report filter is a boolean per case; the account record itself carries no stated reason. Reported as "not exposed in report" on every card.</td></tr>
-<tr><td>Potential account-attribute red fields checked</td><td class="ok">PASS</td><td>Fields probed on Account: <span class="mono">OrgStatus__c</span> (returned "Active" or null for all red accounts — a technical lifecycle flag, not a customer-success red indicator), <span class="mono">Core_Org_Status__c</span> (null across the sample), <span class="mono">cssf_Success_Overview__c</span> (lookup reference to a child object, not traversed in this snapshot). None of these function as the red-status trigger.</td></tr>
-<tr><td>Analytics REST API access</td><td class="flag">NOT AVAILABLE</td><td>The underlying "Red Accounts - AMER" Lightning report (REPORT-ID-REDACTED) was not fetched directly via the Analytics API from this session; the row set was replicated by SOQL using the same filter semantics (<span class="mono">Open_Red_Account__c = true</span>, region, cloud). If the Lightning report applies hidden filters I cannot see (owner team, severity floor, closed-date window), my SOQL may include or exclude a small number of accounts. For exact row-match, request a CSV export and I will re-anchor.</td></tr>
-<tr><td>Lennar Homes case CASE-REDACTED</td><td class="flag">EXCLUDED</td><td>One Cloud__c = null case I verified by subject as true MIAW/SMS. Not included because the account does not appear in the open-red-AMER list for this snapshot.</td></tr>
-<tr><td>Case Comments sample</td><td class="ok">PASS</td><td>~400 most-recent comments pulled across L1/L2 open cases to anchor customer-sentiment statements. All quoted customer language is traceable to a cited case number.</td></tr>
-</tbody>
-</table>
-
-<h2>8. Prioritized Action Plan</h2>
-<div class="sub">Cross-portfolio actions in priority order. P1 = fix within one release / 30 days. P2 = structural improvement within one quarter. P3 = reporting / tooling enhancement.</div>
-<table>
-<thead><tr><th>Priority</th><th>Action</th><th>Why</th><th>Owner</th><th>Target outcome</th></tr></thead>
-<tbody><tr><td class="mono pri-p1">P1</td><td>Treat the Flow/Messaging Channel regression (one AMER account) as a release-blocker triage.</td><td>Open or escalate the parent GUS from case CASE-0039; verify whether CASE-REDACTED had a tracked work item and why its fix did not ship. Make the fix available in all current major-release pods before more accounts hit it.</td><td>Service DE Product Engineering + Flow team</td><td>Prevents additional AMER DE accounts from re-opening red on the same regression.</td></tr><tr><td class="mono pri-p1">P1</td><td>Ship a stale-UserServicePresence / stuck-queue health check as supported telemetry.</td><td>3 L1-adjacent open cases point at the same class of defect. Right now customers are debugging their own routing state; Salesforce should surface it before them.</td><td>Omni-Channel Product + CustomerCare</td><td>Removes the single most common AMER DE Sev 1 pattern.</td></tr><tr><td class="mono pri-p1">P1</td><td>Case-closure hygiene gate for DE Sev 1/Sev 2.</td><td>Mandate a stability window + a tracked work item before DE Sev 1/Sev 2 can move to &#x27;Closed&#x27;. Both the Sev 1 CASE-0008 and the sibling CASE-0005 would have been avoided by this gate.</td><td>OrgCS Service DE Managers</td><td>Eliminates the &#x27;closed-but-recurring&#x27; recidivism; shortens red-streak length.</td></tr><tr><td class="mono pri-p2">P2</td><td>Weekend-shift coverage review for Messaging monitoring.</td><td>The weekend-weighted CASE-0019 explicitly identifies a weekend-weighted pattern; agents and investigators both have thinner coverage. For 24x7 DE channels this is a known coverage gap.</td><td>Service DE Delivery Leadership</td><td>Shortens detection-to-engagement time; reduces repeat Sev 1 opens from the same customer.</td></tr><tr><td class="mono pri-p2">P2</td><td>Proactive health check for high-volume AMER DE accounts.</td><td>Any AMER account carrying ≥100 lifetime DE cases AND ≥3 open DE cases: pair with an SME for a monthly DE health review. Candidate list: ~20 AMER accounts meeting the ≥100 lifetime + ≥3 open DE case threshold.</td><td>Account Owners + Service DE SMEs</td><td>Converts chronic DE pain into tracked remediation plans.</td></tr><tr><td class="mono pri-p3">P3</td><td>Enrich the Red Accounts report with product-attribution.</td><td>Red Accounts - AMER report (REPORT-ID-REDACTED) does not expose the DE-vs-other-cloud attribution; today you have to run a secondary analysis to know. Adding a per-account product-mix column (top cloud, DE share %) would make per-cloud accountability routine.</td><td>OrgCS Analytics / Report Owner</td><td>Scales what this report had to compute manually.</td></tr></tbody>
-</table>
 
 <div class="footer">
 <b>What this report does NOT do.</b> It does not read closed-case post-mortems for every account (that would reach into the historical 2,500+ DE cases per top account); it concentrates evidence on the 73 currently-open DE cases plus the ~400 most-recent comments on L1/L2 cases. It does not pull <span class="mono">EmailMessage</span>, <span class="mono">ConversationEntry</span>, or <span class="mono">Chatter</span>. For a given account the deeper trail is one SOQL query away — ask by name.<br>
